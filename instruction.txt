@@ -1,0 +1,30 @@
+For first time:
+
+1. create venv
+py -3 -m venv .venv
+2. activate venv
+.venv\Scripts\activate
+3. install langchain-ollama
+pip install -U langchain-ollama
+4. pull ollama model (e.g. laama3.2)
+ollama pull llama3.2
+5. create customized ollama model
+ollama create kewordpicker -f ./Modelfile
+  (to compile in cmd: ollama run keywordpicker)
+  (with python: python main.py)
+6. run the model
+  (to compile in cmd: ollama run keywordpicker)
+  (with python: python main.py)
+7. install streamlit
+pip install streamilt --upgrade
+8. run the frontend
+streamlit run streamlit_app.py
+
+----------------------------------------------------
+
+Not for first time:
+
+1. activate venv
+.venv\Scripts\activate
+2. run the frontend
+streamlit run streamlit_app.py
