@@ -1,5 +1,6 @@
 import streamlit as st
 from langchain_ollama import OllamaLLM
+import web_scrape as ws
 
 # Initialize the LLM model
 llm = OllamaLLM(model="keywordpicker")
@@ -41,7 +42,7 @@ if prompt := st.chat_input("What's up?"):
     print(toKeywords)
 
     # Use the response (e.g., echoing the keywords for demonstration)
-    response = toKeywords  # Modify as needed based on your use case
+    response = ws.total_search(toKeywords)  # Modify as needed based on your use case
 
     # Display the response
     display_response(response)

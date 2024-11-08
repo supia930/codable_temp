@@ -6,10 +6,22 @@ from selenium.webdriver.support import expected_conditions as EC
 import time
 from langchain_community.document_loaders import WebBaseLoader
 
+def total_search(keywords) :
+    linkList = []
+    # optimise which function to use first based on keyword
+    linkList.append(search_illinois_edu(keywords))
+    # print("1")
+    linkList.append(search_admissions_edu(keywords))
+    # print("2")
+    linkList.append(search_catalogue_edu(keywords))
+    # print("3")
+    return linkList
+    
 def search_illinois_edu(keywords) :
     driver = webdriver.Chrome()
     driver.get('https://illinois.edu/')
     # time.sleep(3)
+
     #handle cookie
     driver.find_element(By.ID, "onetrust-accept-btn-handler").click()
 
@@ -24,7 +36,7 @@ def search_illinois_edu(keywords) :
     search_bar.send_keys(keywords)
     # Press ENTER to submit the search
     search_bar.send_keys(Keys.RETURN)
-    time.sleep(1)
+    time.sleep(2)
 
     #retrieve result
     first_result = driver.find_element(By.XPATH, "//a[@class='gs-title']")
@@ -34,7 +46,7 @@ def search_illinois_edu(keywords) :
     # while(True):
     #     pass
     result = driver.current_url
-    print(driver.current_url)
+    # print(driver.current_url)
      # Close the browser
     driver.quit()
     # IDEA : make a new function that extracts the key info after getting the correct url
@@ -51,14 +63,13 @@ def search_admissions_edu(keywords):
     search_bar.send_keys(keywords)
     # Press ENTER to submit the search
     search_bar.send_keys(Keys.RETURN)
-    time.sleep(1)
-
+    time.sleep(2)
     #retrieve result
     first_result = driver.find_element(By.XPATH, "//a[@class='gs-title']")
     first_result.click()
 
     result = driver.current_url
-    print(driver.current_url)
+    # print(driver.current_url)
     # Close the browser
     driver.quit()
     # Leave browser open 
@@ -74,12 +85,12 @@ def search_catalogue_edu(keywords) :
   # driver.find_element(By.ID, "onetrust-accept-btn-handler").click()
   #search bar 
   search_bar = driver.find_element(By.ID, 'cat-search-term')
-  keywords = "graduation requirements for CS"
+  # keywords = "graduation requirements for CS"
   # input keyword in search bar
   search_bar.send_keys(keywords)
   # Press ENTER to submit the search
   search_bar.send_keys(Keys.RETURN)
-  time.sleep(1)
+  time.sleep(2)
 
 
   # handle cookie
@@ -160,12 +171,12 @@ def search_catalogue_edu(keywords) :
 # result = driver.current_url
 # print(driver.current_url)
 
-keyword = "Grainger Tuition"
-search_illinois_edu(keyword)
+# keyword = "Grainger Tuition"
+# print(total_search(keyword))
 # Close the browser
 # driver.quit()
 # Leave browser open 
 
 # search_admissions_edu("Hello")
-while(True):
-    pass
+# while(True):
+#     pass
