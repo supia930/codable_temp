@@ -4,12 +4,13 @@ For first time:
 py -3 -m venv .venv
 2. activate venv
 .venv\Scripts\activate
+(3~7).pip install -r requirements.txt
 3. install langchain-ollama
 pip install -U langchain-ollama
 4. pull ollama model (e.g. laama3.2)
 ollama pull llama3.2
 5. create customized ollama model
-ollama create kewordpicker -f ./Modelfile
+ollama create kewordpicker -f ./Modefile
   (to compile in cmd: ollama run keywordpicker)
   (with python: python main.py)
 6. run the model
