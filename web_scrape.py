@@ -171,8 +171,8 @@ def search_catalogue_edu(keywords) :
 # result = driver.current_url
 # print(driver.current_url)
 
-# keyword = "Grainger Tuition"
-# print(total_search(keyword))
+keyword = "Grainger Tuition"
+print(total_search(keyword))
 # Close the browser
 # driver.quit()
 # Leave browser open 
